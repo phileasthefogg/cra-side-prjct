@@ -1,5 +1,5 @@
 {
-  "name": "cra-side-prjct",
+  "name": "cra-template-side-prjct",
   "license": "MIT",
   "author": "Harrison Lau <phileasthefogg@gmail.com>",
   "description": "A quick start Create React App template with Typescript, Redux, Styled-components, and Cypress.io using an Atomic Design folder structure",
@@ -15,8 +15,20 @@
     "styled-components",
     "atomic-design"
   ],
-  "version": "0.1.0",
-  "private": true,
+  "main": "template.json",
+  "files": [
+    "template",
+    "template.json"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/phileasthefogg/cra-side-prjct",
+    "directory": "/"
+  },
+  "bugs": {
+    "url": "https://github.com/phileasthefogg/cra-side-prjct/issues"
+  },
+  "version": "0.2.0",
   "dependencies": {
     "@types/mocha": "^8.2.2",
     "@types/node": "^12.0.0",
@@ -32,7 +44,10 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "cypress open",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "clean-files": "rm -rf ./template/public ./template/src && rm -f ./template/cypress.json && rm -f ./template/tsconfig.json",
+    "copy-files": "cp -a ./src/. template/src && cp -a ./public/. template/public && cp cypress.json template/  && cp tsconfig.json template/",
+    "prepublishOnly": "yarn clean-files && yarn copy-files"
   },
   "eslintConfig": {
     "extends": [
